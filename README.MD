@@ -30,13 +30,13 @@ Whether you’re building a simple API with a few static routes and a catch-all 
 
 ## Installation
 
-Add `blitzhttp` to your Go project using the tagged release `v0.1.0`:
+Add `blitzhttp` to your Go project using the tagged release `v0.1.1`:
 
 ```bash
-go get github.com/NazmulIslamFahim/blitzhttp@v0.1.0
+go get github.com/NazmulIslamFahim/blitzhttp@v0.1.1
 ```
 
-This fetches the stable `v0.1.0` version, which includes all features and optimizations described here.
+This fetches the stable `v0.1.1` version, which includes all features and optimizations described here.
 
 For the latest development version (not recommended for production):
 
@@ -59,9 +59,9 @@ If you’re working with a local copy of `blitzhttp`:
 
    go 1.21
 
-   require github.com/NazmulIslamFahim/blitzhttp v0.1.0
+   require github.com/NazmulIslamFahim/blitzhttp v0.1.1
 
-   replace github.com/NazmulIslamFahim/blitzhttp v0.1.0 => ../blitzhttp
+   replace github.com/NazmulIslamFahim/blitzhttp v0.1.1 => ../blitzhttp
    ```
 
 3. Run `go mod tidy` to resolve dependencies.

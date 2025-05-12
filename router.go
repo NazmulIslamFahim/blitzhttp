@@ -56,28 +56,28 @@ func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		}
 	}
 
-	// // Parameterized match
-	// for p, rt := range r.params {
-	// 	if params := matchParam(path, p); params != "" {
-	// 		if h := rt.getHandler(req.Method); h != nil {
-	// 			ctx := context.WithValue(req.Context(), paramsKey, params)
-	// 			h.handler.ServeHTTP(w, req.WithContext(ctx))
-	// 			return
-	// 		}
-	// 	}
-	// }
+	// Parameterized match
+	for p, rt := range r.params {
+		if params := matchParam(path, p); params != "" {
+			if h := rt.getHandler(req.Method); h != nil {
+				ctx := context.WithValue(req.Context(), paramsKey, params)
+				h.handler.ServeHTTP(w, req.WithContext(ctx))
+				return
+			}
+		}
+	}
 
-	// // Wildcard match
-	// for p, rt := range r.wildcards {
-	// 	if strings.HasPrefix(path, p[:len(p)-1]) {
-	// 		if h := rt.getHandler(req.Method); h != nil {
-	// 			params := path[len(p):]
-	// 			ctx := context.WithValue(req.Context(), paramsKey, params)
-	// 			h.handler.ServeHTTP(w, req.WithContext(ctx))
-	// 			return
-	// 		}
-	// 	}
-	// }
+	// Wildcard match
+	for p, rt := range r.wildcards {
+		if strings.HasPrefix(path, p[:len(p)-1]) {
+			if h := rt.getHandler(req.Method); h != nil {
+				params := path[len(p):]
+				ctx := context.WithValue(req.Context(), paramsKey, params)
+				h.handler.ServeHTTP(w, req.WithContext(ctx))
+				return
+			}
+		}
+	}
 
 	// Catch-all match
 	if r.catchAll != nil {
