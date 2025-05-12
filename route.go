@@ -1,6 +1,7 @@
 package blitzhttp
 
 import (
+	"context"
 	"net/http"
 	"strings"
 )
@@ -110,6 +111,14 @@ func (r *Router) compileStatic() {
 		if rt, ok := r.static[path]; ok {
 			if h := rt.getHandler(req.Method); h != nil {
 				h.handler.ServeHTTP(w, req)
+				return
+			}
+		}
+		// Check catch-all for unmatched paths
+		if r.catchAll != nil {
+			if h := r.catchAll.getHandler(req.Method); h != nil {
+				ctx := context.WithValue(req.Context(), paramsKey, path)
+				h.handler.ServeHTTP(w, req.WithContext(ctx))
 				return
 			}
 		}
