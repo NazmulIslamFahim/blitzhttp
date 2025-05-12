@@ -36,7 +36,7 @@ Add `blitzhttp` to your Go project using the tagged release `v0.1.0`:
 go get github.com/NazmulIslamFahim/blitzhttp@v0.1.0
 ```
 
-Replace `NazmulIslamFahim` with the actual repository owner. This fetches the stable `v0.1.0` version, which includes all features and optimizations described here.
+This fetches the stable `v0.1.0` version, which includes all features and optimizations described here.
 
 For the latest development version (not recommended for production):
 
